@@ -3,10 +3,10 @@
 
 - name: create boot-disk
   gcp_compute_disk:
-    name: "{{ item.1.disk.name}}"
-    size_gb: "{{ item.1.disk.size}}"
-    source_image: "{{ item.1.disk.image}}"
-    zone: "{{ item.0.zone}}"
+    name: "{{ item.1.disk.name }}"
+    size_gb: "{{ item.1.disk.size }}"
+    source_image: "{{ item.1.disk.image }}"
+    zone: "{{ item.0.zone }}"
 
     project: "{{ general.project }}"
     auth_kind: "{{ general.auth_kind }}"
@@ -20,9 +20,9 @@
 
 - name: create non-boot-disks
   gcp_compute_disk:
-    name: "{{ item.1.disk.name}}"
-    size_gb: "{{ item.1.disk.size}}"
-    zone: "{{ item.0.zone}}"
+    name: "{{ item.1.disk.name }}"
+    size_gb: "{{ item.1.disk.size }}"
+    zone: "{{ item.0.zone }}"
 
     project: "{{ general.project }}"
     auth_kind: "{{ general.auth_kind }}"
