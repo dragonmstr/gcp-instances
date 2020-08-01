@@ -86,4 +86,4 @@ BSD
 Author Information
 ------------------
 
-(tansudasli)[http://github.com/tansudasli]
+[tansudasli](http://github.com/tansudasli)
