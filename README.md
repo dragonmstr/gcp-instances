@@ -1,17 +1,68 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+Provision compute instance(s) on GCP with production grade requirements.
+
+- [x] instance(s)
+- [x] dedicated boot-disk
+- [x] dedicated and mounted data and log disk
+- [x] a static IP
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+It requires: 
+- ansible client
+- service account and google account
+- gcp module in ansible.cfg
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+Role, on default, supports *standalone* provisioning. If you want *distributed* provisioning, you can provide more nodes, with appropriate naming convention, as list in _your_ running yaml file.
+
+defaults/main.yml, 
+```
+# GCP project
+general:
+    project: sandbox-236618       #gcp project ID 
+    region: europe-west4          #gcp region
+    auth_kind: serviceaccount     
+    service_account_file: ~/.ssh/ansible-sandbox-236618-5fd34807ceb2.json
+scopes:
+    - https://www.googleapis.com/auth/compute
+
+# design your infrastructure architecture
+nodes:
+  - name: standalone-node    #node-name such as standalone-node/name-node/secondary-name-node/data-node1/data-node2 ..
+    zone: europe-west4-a     #choose close regions, distribute to other nodes
+    machine_type: f1-micro   #increase when needed
+    ips:
+        - nic: 
+            name: "ip-01"
+    tags: hadoop             #network tags used by FW rules! Use the tool name like hadoop, elasticsearch ...
+    labels:                  #filtering! Use the tool name as type + master/worker as name
+        type: hdfs
+        name: master
+    boot_disk:
+        - disk:
+            name: "boot-disk-01"
+            size: 100
+            image: "projects/ubuntu-os-cloud/global/images/family/ubuntu-2004-lts"
+            auto_delete: true
+            boot: true
+    additional_disks:
+        - disk: 
+            name: "data-disk-01"
+            size: 300
+            auto_delete: true     #false is better for production usecases
+            boot: false
+        - disk: 
+            name: "log-disk-01"
+            size: 300
+            auto_delete: true     #false is better for production usecases
+            boot: false
+```
 
 Dependencies
 ------------
@@ -35,4 +86,4 @@ BSD
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+(tansudasli)[http://github.com/tansudasli]
