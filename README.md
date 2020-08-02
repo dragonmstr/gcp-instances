@@ -13,8 +13,8 @@ Requirements
 
 It requires: 
 - _ansible_ client
+- _ansible.cfg_ file and enable _gcp_compute_ plugin
 - service account and gcp account
-- _gcp_ module activation in ansible.cfg
 
 Role Variables
 --------------
@@ -72,11 +72,30 @@ A list of other roles hosted on Galaxy should go here, plus any details in regar
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+[Click](https://github.com/ansible-injection/test-gcp-iaas-roles) to test and see example playbooks.
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+for provision.yaml file:
+
+```
+- name: Create Compute Instance(s)
+  hosts: localhost
+  gather_facts: no
+
+   vars:
+     general:
+         project: sandbox-236618
+         region: europe-west4
+         auth_kind: serviceaccount
+         service_account_file: ~/.ssh/ansible.json
+     scopes:
+         - https://www.googleapis.com/auth/compute
+          
+  tasks:
+
+  roles:
+    #run w/ default var values
+    - role: tansudasli.gcp_instances  
+```
 
 License
 -------
