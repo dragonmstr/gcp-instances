@@ -5,13 +5,12 @@ Provision compute instance(s) on GCP with production grade requirements.
 
 - [x] instance(s)
 - [x] dedicated boot-disk
-- [x] dedicated and mounted data and log disk
+- [x] dedicated data and log disk
 - [x] a static IP
 
 Requirements
 ------------
-
-It requires: 
+ 
 - _ansible_ client
 - _ansible.cfg_ file and enable _gcp_compute_ plugin
 - service account and gcp account
@@ -100,7 +99,7 @@ for provision.yaml file:
 License
 -------
 
-BSD
+Apache-2.0
 
 Author Information
 ------------------
