@@ -12,9 +12,9 @@ Requirements
 ------------
 
 It requires: 
-- ansible client
-- service account and google account
-- gcp module in ansible.cfg
+- _ansible_ client
+- service account and gcp account
+- _gcp_ module activation in ansible.cfg
 
 Role Variables
 --------------
@@ -28,7 +28,7 @@ general:
     project: sandbox-236618       #gcp project ID 
     region: europe-west4          #gcp region
     auth_kind: serviceaccount     
-    service_account_file: ~/.ssh/ansible-sandbox-236618-5fd34807ceb2.json
+    service_account_file: ~/.ssh/ansible.json
 scopes:
     - https://www.googleapis.com/auth/compute
 

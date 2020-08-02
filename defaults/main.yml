@@ -7,7 +7,7 @@ general:
     project: sandbox-236618       #gcp project ID 
     region: europe-west4          #gcp region
     auth_kind: serviceaccount     
-    service_account_file: ~/.ssh/ansible-sandbox-236618-5fd34807ceb2.json
+    service_account_file: ~/.ssh/ansible.json
 scopes:
     - https://www.googleapis.com/auth/compute
 
