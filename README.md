@@ -12,7 +12,7 @@ Requirements
 ------------
  
 - _ansible_ client
-- _ansible.cfg_ file and enable _gcp_compute_ plugin
+- _ansible.cfg_ file
 - service account and gcp account
 
 Role Variables
