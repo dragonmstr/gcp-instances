@@ -73,8 +73,22 @@ Example Playbook
 
 [Click](https://github.com/ansible-injection/test-gcp-iaas-roles) to test and see example playbooks.
 
-for provision.yaml file:
+ansible.cfg
+```
+[defaults]
+host_key_checking = False
+inventory = hosts
 
+remote_user = tansudasli                          #your gcp account
+private_key_file = ~/.ssh/google_compute_engine   #If set, always uses this for authentication
+
+[inventory]
+# List of enabled inventory plugins and the order in which they are used.
+enable_plugins = host_list, script, yaml, ini, auto, gcp_compute
+
+```
+
+provision.yaml
 ```
 - name: Create Compute Instance(s)
   hosts: localhost
