@@ -71,7 +71,7 @@ n/a
 Example Playbook
 ----------------
 
-[Click](https://github.com/ansible-injection/test-gcp-iaas-roles) to test and see example playbooks.
+[Click](https://github.com/dragonmstr/test-gcp-iaas-roles) to test and see example playbooks.
 
 ansible.cfg
 ```
@@ -118,4 +118,4 @@ Apache-2.0
 Author Information
 ------------------
 
-[tansudasli](http://github.com/tansudasli)
+[Dragonmstr](http://github.com/dragonmstr)
